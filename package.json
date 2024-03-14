@@ -1,0 +1,17 @@
+{
+  "name": "url-shortner",
+  "version": "1.0.0",
+  "description": "Project to shorten the big URL into smaller urls also tracks the analytics of clicks",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index"
+  },
+  "author": "Rajat Mittal",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.3",
+    "mongoose": "^8.2.1",
+    "nodemon": "^3.1.0",
+    "shortid": "^2.2.16"
+  }
+}
