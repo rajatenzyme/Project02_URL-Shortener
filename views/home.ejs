@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener | Make a unique small URL for long urls | Get Tracking details of Clicks</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+
+<body>
+    <h1> URL Shortener with Tracking of Clicks</h1>
+    
+
+     
+
+    <form method="post" action="/url">
+        <label>Enter Your URL here</label>
+        <input type = "text" placeholder="www.example.com" name = "url">
+        <button type="submit"> Generate Short URL</button>
+    </form>
+
+    <% if (locals.id) { %>
+        <center><p>URL Generated: <a href="http://localhost:8001/url/<%= id %>" class="short-url">http://localhost:8001/url/<%= id %></a></p></center>
+      <% } %>
+      
+
+    <% if (locals.urls) { %>
+        <table>
+                <thead>
+                    <th>S. No.</th>
+                    <th>Short ID</th>
+                    <th>Shortened URL</th>
+                    <th>Redirect URL</th>
+                    <th>Total Clicks</th>
+                </thead>
+                <tbody>
+                        <% urls.forEach((url, index) =>  { %>
+                            <tr>
+                            <td><%=  index  + 1  %></td>
+                            <td><%= url.shortID %></td>
+                            <td><a href="http://localhost:8001/url/<%= url.shortID %>" class="short-url">http://localhost:8001/url/<%= url.shortID %></a></td>
+                            <td><a href="<%= url.redirectURL %>" class="short-url"><%= url.redirectURL %></a></td>
+                            <td><a href="http://localhost:8001/url/analytics/<%= url.shortID %>"><%= url.visitHistory.length %></a></td>
+                            
+                        </tr>
+                        <% }) %>         
+                </tbody>
+        </table>
+    <% } %>
+</body>
+
+
+</html>
