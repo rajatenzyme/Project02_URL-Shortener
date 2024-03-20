@@ -24,6 +24,7 @@ app.get('/:id', async (req, res) => {
         $push: {
             visitHistory : {
                 timestamp : Date.now(),
+                IP_Address : req.ip,
             },
             },
         }

@@ -43,7 +43,7 @@ async function handleGenerateNewShortURL(req, res){
 async function handleAnalyticsbyShortID(req, res){
     const shortID = req.params.id;
     const entry = await URL.findOne({shortID});
-    return res.json({"totalClicks" : entry.visitHistory.length, "visitHistory" : entry.visitHistory})
+    return res.json({"Original-URL" : entry.redirectURL,  "shortened-URL" : "http://localhost:8001/" + shortID, "totalClicks" : entry.visitHistory.length, "visitHistory" : entry.visitHistory})
 }
 
 module.exports= {handleGenerateNewShortURL, handleAnalyticsbyShortID};
