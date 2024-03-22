@@ -12,6 +12,14 @@
 <body>
     <h1> URL Shortener with Tracking of Clicks</h1>
     
+   
+    <button id="logout-btn" onclick="clickFun()">       
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span> 
+          Logout 
+    </button>
 
      
 
@@ -19,7 +27,10 @@
         <label>Enter Your URL here</label>
         <input type = "text" placeholder="www.example.com" name = "url">
         <button type="submit"> Generate Short URL</button>
+       
     </form>
+
+    
 
     <% if (locals.id) { %>
         <center><p>URL Generated: <a href="http://localhost:8001/url/<%= id %>" class="short-url">http://localhost:8001/url/<%= id %></a></p></center>
@@ -50,6 +61,10 @@
         </table>
     <% } %>
 </body>
-
+<script>
+    function clickFun() {
+        window.location = '/logout';
+    }
+</script>
 
 </html>

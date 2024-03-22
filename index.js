@@ -1,10 +1,17 @@
 const express = require('express')
 const path = require("path")
 const {connectToDb} = require('./connection')
-const urlRoute = require('./routes/url')
-const staticRoute = require('./routes/staticRouter')
+
 
 const URL = require("./models/url")
+
+
+const urlRoute = require('./routes/url')
+const staticRoute = require('./routes/staticRouter')
+const userRoute = require("./routes/user")
+const cookieParser = require('cookie-parser')
+const { restrictToLoggedInUserOnly, checkAuth } = require('./middlewares/auth')
+const { handleUserLogOut } = require('./controllers/user')
 
 
 const PORT = process.env.PORT || 8001;
@@ -20,8 +27,10 @@ app.set("views", path.resolve("./views"));
 app.use(express.static("./views"));
 
 
+
 app.use(express.json())
 app.use(express.urlencoded({extended : false}));
+app.use(cookieParser());
 
 
 
@@ -32,9 +41,14 @@ app.use(express.urlencoded({extended : false}));
 //     });
 // })
 
-app.use('/', staticRoute);
-app.use('/url', urlRoute);
+app.use('/url', restrictToLoggedInUserOnly, urlRoute);
+app.use('/user', userRoute);
+app.use('/', checkAuth,  staticRoute);
 
+
+// app.get('*', function(req, res){
+//     return res.render("404")
+//   });
 
 
 app.get('/url/:id', async (req, res) => {
@@ -54,6 +68,9 @@ app.get('/url/:id', async (req, res) => {
     );
     return res.redirect(entry.redirectURL)
 })
+
+app.get('/logout', handleUserLogOut);
+
 
 
 app.listen(PORT, () => console.log(`Server Started at PORT : ${PORT}`));

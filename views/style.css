@@ -67,3 +67,15 @@ body {
     text-decoration: underline; /* Underline on hover for link indication */
   }
   
+
+ 
+
+#logout-btn {
+  line-height: 12px;
+  font-size: 15pt;
+  font-family: tahoma;
+  margin-right: 10px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
