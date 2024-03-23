@@ -50,6 +50,6 @@ app.get("/url/:id", async (req, res) => {
   return res.redirect(entry.redirectURL);
 });
 
-app.get("/logout", handleUserLogOut);
+
 
 app.listen(PORT, () => console.log(`Server Started at PORT : ${PORT}`));

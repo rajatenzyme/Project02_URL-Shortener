@@ -25,7 +25,7 @@ async function handleAnalyticsbyShortID(req, res){
     if(!entry)
         return res.render("404")
         // return res.json("404 Error!")
-    return res.json({"Original-URL" : entry.redirectURL,  "shortened-URL" : "http://localhost:8001/" + shortID, "totalClicks" : entry.visitHistory.length, "visitHistory" : entry.visitHistory})
+    return res.json({"Original-URL" : entry.redirectURL,  "shortened-URL" : "http://localhost:8001/url/" + shortID, "totalClicks" : entry.visitHistory.length, "visitHistory" : entry.visitHistory})
 }
 
 module.exports= {handleGenerateNewShortURL, handleAnalyticsbyShortID};

@@ -31,22 +31,19 @@ async function handleUserLogIn(req, res){
     // error : "Invalid Username or password"},
     // console.log("Invalid Username or password"));
     
-    const sessionId = uuidv4();
     
-    setUser(sessionId, user);
-    res.cookie("uid", sessionId);
+    
+    const token = setUser(user);
+
+    res.cookie("uid", token);
 
     return res.redirect("/");
 
 }
 
 
-async function handleUserLogOut(req, res){
-    const userUid = req.cookies?.uid;
-    logoutUser(userUid);
-    return res.redirect("/login")
-}
 
 
-module.exports = {handleUserSignUp, handleUserLogIn, handleUserLogOut};
+
+module.exports = {handleUserSignUp, handleUserLogIn};
 
