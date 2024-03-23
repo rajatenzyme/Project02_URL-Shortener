@@ -7,6 +7,15 @@ html {
     font-family: sans-serif;
     background: linear-gradient(#141e30, #243b55);
   }
+
+  h3 {
+    position: absolute;
+    top: 10%;
+    left: 41%;
+    width: 400px;
+    padding: 40px;
+    color: #fff;
+  }
   
   .login-box {
     position: absolute;

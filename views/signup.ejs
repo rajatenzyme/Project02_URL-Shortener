@@ -25,10 +25,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signup</title>
+    <title>Signup | URL-Shortener</title>
     <link rel="stylesheet" href="login.css">
 </head>
 <body>
+  <h3>Welcome to URL- Shortener</h3>
     <div class="login-box">
         <h2>Signup</h2>
         <form action="/user" method="post">
@@ -52,10 +53,22 @@
             <span></span>
             <span></span>
             Sign up</button>
+
+            <button onclick="clickFun()">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              Log In</button>
         </form>
       </div>
 
 </body>
+<script>
+  function clickFun() {
+      window.location = '/login';
+  }
+</script>
 </html> 
 
 

@@ -23,9 +23,13 @@ async function handleUserLogIn(req, res){
     const {email, password} = req.body;
     const user = await User.findOne({email, password});
 
-    if(!user)
-        return res.render("login", {
-    error : "Invalid Username or password"});
+    if(!user){
+        res.status(400).json({error: "Please try to login with correct credentials"});
+        return; 
+    }
+    //     return res.render("login", {
+    // error : "Invalid Username or password"},
+    // console.log("Invalid Username or password"));
     
     const sessionId = uuidv4();
     

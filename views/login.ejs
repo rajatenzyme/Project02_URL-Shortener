@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Login | URL Shortener</title>
     <link rel="stylesheet" href="login.css">
 </head>
 
 <body>
+  <h3>Welcome to URL- Shortener</h3>
     <div class="login-box">
         <h2>Login</h2>
         <form action="/user/login" method="post">
@@ -29,12 +30,14 @@
               Log In
           </button>
 
+
+
           <button onclick="clickFun()">       
             <span></span>
             <span></span>
             <span></span>
             <span></span> 
-              Logout 
+              Sign Up 
           </button>
 
         </form>
@@ -43,7 +46,7 @@
 </body>
 <script>
   function clickFun() {
-      window.location = '/logout';
+      window.location = '/signup';
   }
 </script>
 </html> 

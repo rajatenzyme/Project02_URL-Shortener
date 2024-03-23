@@ -33,7 +33,7 @@
     
 
     <% if (locals.id) { %>
-        <center><p>URL Generated: <a href="http://localhost:8001/url/<%= id %>" class="short-url">http://localhost:8001/url/<%= id %></a></p></center>
+        <center><p>URL Generated: <a href="http://localhost:8001/url/<%= id %>" target="_blank" class="short-url">http://localhost:8001/url/<%= id %></a></p></center>
       <% } %>
       
 
@@ -51,9 +51,9 @@
                             <tr>
                             <td><%=  index  + 1  %></td>
                             <td><%= url.shortID %></td>
-                            <td><a href="http://localhost:8001/url/<%= url.shortID %>" class="short-url">http://localhost:8001/url/<%= url.shortID %></a></td>
-                            <td><a href="<%= url.redirectURL %>" class="short-url"><%= url.redirectURL %></a></td>
-                            <td><a href="http://localhost:8001/url/analytics/<%= url.shortID %>"><%= url.visitHistory.length %></a></td>
+                            <td><a href="http://localhost:8001/url/<%= url.shortID %>" target="_blank" class="short-url">http://localhost:8001/url/<%= url.shortID %></a></td>
+                            <td><a href="<%= url.redirectURL %>" target="_blank" class="short-url"><%= url.redirectURL %></a></td>
+                            <td><a href="http://localhost:8001/url/analytics/<%= url.shortID %>" target="_blank"><%= url.visitHistory.length %></a></td>
                             
                         </tr>
                         <% }) %>         
