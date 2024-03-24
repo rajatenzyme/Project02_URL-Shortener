@@ -50,6 +50,4 @@ app.get("/url/:id", async (req, res) => {
   return res.redirect(entry.redirectURL);
 });
 
-
-
 app.listen(PORT, () => console.log(`Server Started at PORT : ${PORT}`));

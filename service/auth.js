@@ -1,28 +1,25 @@
-const jwt = require("jsonwebtoken")
-const secret = "gdjhgdhgd2t172tdghjasgd"
+const jwt = require("jsonwebtoken");
+const secret = "gdjhgdhgd2t172tdghjasgd";
 
-
-function setUser(user){
-    return jwt.sign({
-        _id : user._id,
-        email : user.email,
+function setUser(user) {
+  return jwt.sign(
+    {
+      _id: user._id,
+      email: user.email,
     },
     secret
-    );
+  );
 }
 
-function getUser(token){
-    if(!token) return null;
-    try {
-        return jwt.verify(token, secret);
-    } catch (error) {
-        
-    }
+function getUser(token) {
+  if (!token) return null;
+  try {
+    return jwt.verify(token, secret);
+  } catch (error) {}
 }
-
 
 // function logoutUser(id){
 //     sessionIdToUserMap.delete(id);
 // }
 
-module.exports = {setUser, getUser};
+module.exports = { setUser, getUser };
