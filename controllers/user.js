@@ -1,13 +1,15 @@
 const { v4: uuidv4 } = require("uuid");
-const { getUser, setUser, logoutUser } = require("../service/auth");
+const { getUser, setUser } = require("../service/auth");
 const User = require("../models/user");
 
 async function handleUserSignUp(req, res) {
   const { name, email, password } = req.body;
+  const role = 'NORMAL'
   await User.create({
     name,
     email,
     password,
+    role,
   });
 
   return res.redirect("/");
@@ -23,11 +25,9 @@ async function handleUserLogIn(req, res) {
       .json({ error: "Please try to login with correct credentials" });
     return;
   }
-  //     return res.render("login", {
-  // error : "Invalid Username or password"},
-  // console.log("Invalid Username or password"));
-
+  
   const token = setUser(user);
+  // console.log("token", token)
 
   res.cookie("uid", token);
 

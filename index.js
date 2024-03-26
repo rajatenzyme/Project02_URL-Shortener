@@ -8,8 +8,7 @@ const urlRoute = require("./routes/url");
 const staticRoute = require("./routes/staticRouter");
 const userRoute = require("./routes/user");
 const cookieParser = require("cookie-parser");
-const { restrictToLoggedInUserOnly, checkAuth } = require("./middlewares/auth");
-const { handleUserLogOut } = require("./controllers/user");
+const { checkForAuthorization, restrictTo } = require("./middlewares/auth");
 
 const PORT = process.env.PORT || 8001;
 
@@ -27,10 +26,11 @@ app.use(express.static("./views"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(checkForAuthorization)
 
-app.use("/url", restrictToLoggedInUserOnly, urlRoute);
+app.use("/url", restrictTo(['NORMAL', 'ADMIN']), urlRoute);
 app.use("/user", userRoute);
-app.use("/", checkAuth, staticRoute);
+app.use("/", staticRoute);
 
 app.get("/url/:id", async (req, res) => {
   const shortID = req.params.id;
